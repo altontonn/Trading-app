@@ -4,7 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
-/src/apis
+
+#folder
+/src/apis/finnHub.js
 
 # testing
 /coverage
