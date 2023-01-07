@@ -5,9 +5,6 @@
 /.pnp
 .pnp.js
 
-#folder
-finnHub.js
-
 # testing
 /coverage
 
