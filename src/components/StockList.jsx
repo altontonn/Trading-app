@@ -1,12 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BsFillCaretDownFill, BsFillCaretUpFill } from "react-icons/bs";
 import finnHub from "../apis/finnHub";
+import { WatchListContext } from "../context/watchListContext";
 
 export const StockList = () => {
   // eslint-disable-next-line
   const [stock, setStock] = useState();
-  // eslint-disable-next-line
-  const [watchList, setWatchList] = useState(["GOOGL", "MSFT", "AMZN"]);
+  const { watchList } = useContext(WatchListContext);
   const changeColor = (change) => {
     return (
       change > 0 ? "Success" : "danger" 
