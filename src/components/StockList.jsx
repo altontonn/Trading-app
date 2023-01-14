@@ -39,7 +39,7 @@ export const StockList = () => {
             symbol: response.config.params.symbol
           }
         })
-        console.log(data);
+        //console.log(data);
         if (isMounted) {
           setStock(data);
         }
@@ -69,22 +69,18 @@ export const StockList = () => {
           </tr>
         </thead>
         <tbody>
-          {
-            stock.map((stockData) => {
-              return (
-                <tr style ={{ cursor: "pointer"}}onClick={() => handleStockSelect(stockData.symbol)} className="table-row" key={stockData.symbol}>
-                  <th scope="row">{stockData.symbol}</th>
-                  <td>{stockData.data.c}</td>
-                  <td className={`text-${changeColor(stockData.data.d)}`}>{stockData.data.d}{renderIcon(stockData.data.dp)}</td>
-                  <td className={`text-${changeColor(stockData.data.d)}`}>{stockData.data.dp}{renderIcon(stockData.data.dp)}</td>
-                  <td>{stockData.data.h}</td>
-                  <td>{stockData.data.l}</td>
-                  <td>{stockData.data.o}</td>
-                  <td>{stockData.data.pc}</td>
-                </tr>
-              )
-            })
-          }
+          {stock.map((stockData) => (
+            <tr style ={{ cursor: "pointer" }} onClick={() => handleStockSelect(stockData.symbol)} className="table-row" key={stockData.symbol}>
+              <th scope="row">{stockData.symbol}</th>
+              <td>{stockData.data.c}</td>
+              <td className={`text-${changeColor(stockData.data.d)}`}>{stockData.data.d}{renderIcon(stockData.data.dp)}</td>
+              <td className={`text-${changeColor(stockData.data.d)}`}>{stockData.data.dp}{renderIcon(stockData.data.dp)}</td>
+              <td>{stockData.data.h}</td>
+              <td>{stockData.data.l}</td>
+              <td>{stockData.data.o}</td>
+              <td>{stockData.data.pc}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
