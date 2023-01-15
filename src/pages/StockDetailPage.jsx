@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import finnHub from "../apis/finnHub";
+import { StockChart } from "../components/StockChart";
 
 const formatData = (data) => {
   return data.t .map((el, index) => {
@@ -67,5 +68,11 @@ export const StockDetailPage = () => {
     };
     fetchData();
   }, [symbol]);
-  return <div>Stock Detail Page {symbol}</div>;
+  return <div>
+    {chartData && (
+      <div>
+        <StockChart chartData={chartData} symbol={symbol} />
+      </div>
+    )}
+  </div>;
 };
