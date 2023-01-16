@@ -5,14 +5,13 @@ import finnHub from "../apis/finnHub";
 import { WatchListContext } from "../context/watchListContext";
 
 export const StockList = () => {
-  // eslint-disable-next-line
   const [stock, setStock] = useState();
   const { watchList } = useContext(WatchListContext);
   const navigate = useNavigate();
 
   const changeColor = (change) => {
     return (
-      change > 0 ? "Success" : "danger" 
+      change > 0 ? "Success" : "danger"
     )
   }
   const renderIcon = (change) => {
@@ -43,7 +42,7 @@ export const StockList = () => {
         if (isMounted) {
           setStock(data);
         }
-      } catch (error) {}
+      } catch (error) { }
     };
     fetchData();
     return () => (isMounted = false);
@@ -56,7 +55,7 @@ export const StockList = () => {
   return (
     <div>
       <table className="table hover mt-5">
-        <thead style={{color: "rgb(79, 89, 102)"}}>
+        <thead style={{ color: "rgb(79, 89, 102)" }}>
           <tr>
             <th scope="col">Name</th>
             <th scope="col">Last</th>
@@ -72,7 +71,7 @@ export const StockList = () => {
           {
             stock.map((stockData) => {
               return (
-                <tr style ={{ cursor: "pointer"}}onClick={() => handleStockSelect(stockData.symbol)} className="table-row" key={stockData.symbol}>
+                <tr style={{ cursor: "pointer" }} onClick={() => handleStockSelect(stockData.symbol)} className="table-row" key={stockData.symbol}>
                   <th scope="row">{stockData.symbol}</th>
                   <td>{stockData.data.c}</td>
                   <td className={`text-${changeColor(stockData.data.d)}`}>{stockData.data.d}{renderIcon(stockData.data.dp)}</td>
